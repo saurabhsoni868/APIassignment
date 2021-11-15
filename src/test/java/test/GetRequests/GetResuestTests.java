@@ -42,7 +42,7 @@ public class GetResuestTests {
 		response = GetApiPosts.GetReponseCommentOfPostsOnPost_ID("1");
 		assertionClassObj = new AssertionsClass(response);
 		assertionClassObj.AssertResponseStatusCode(200);
-		assertionClassObj.AssertResponseNameForarrayDataGet("id labore ex et quam laborum");
+		assertionClassObj.AssertResponseNameForarrayDataGet("id ls ls labore ex et quam laborum");
 	}
 
 	// get the comments inside first post by Query param
