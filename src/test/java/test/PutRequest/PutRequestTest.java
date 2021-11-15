@@ -20,7 +20,7 @@ public class PutRequestTest
 		response=PutApiPosts.GetReponsePosts_for_Put_Req_of_Post_on_post_ID("1");
 		assertionClassObj = new AssertionsClass(response);
 		assertionClassObj.AssertResponseStatusCode(200);
-		assertionClassObj.AssertResponsebodyOfPost("Happy_Diwali");
+		assertionClassObj.AssertResponsebodyOfPost("Happy_Diwali_");
 
 	}
 	
