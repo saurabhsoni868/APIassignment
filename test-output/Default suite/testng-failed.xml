@@ -5,7 +5,7 @@
     <classes>
       <class name="test.GetRequests.GetResuestTests">
         <methods>
-          <include name="getInvalidComment"/>
+          <include name="getFirstPostCommentInvalid1"/>
         </methods>
       </class> <!-- test.GetRequests.GetResuestTests -->
     </classes>

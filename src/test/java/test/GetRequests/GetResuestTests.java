@@ -2,10 +2,14 @@ package test.GetRequests;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import API.Album.GetApiAlbums;
 import API.Comments.GetApiComments;
 import API.MediaPosts.GetApiPosts;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import utility.AssertionsClass;
 
@@ -42,7 +46,7 @@ public class GetResuestTests {
 		response = GetApiPosts.GetReponseCommentOfPostsOnPost_ID("1");
 		assertionClassObj = new AssertionsClass(response);
 		assertionClassObj.AssertResponseStatusCode(200);
-		assertionClassObj.AssertResponseNameForarrayDataGet("id ls ls labore ex et quam laborum");
+		assertionClassObj.AssertResponseNameForarrayDataGet("id labore ex et quam laborum");
 	}
 
 	// get the comments inside first post by Query param
@@ -125,6 +129,24 @@ public class GetResuestTests {
 		response = GetApiPosts.GetReponseCommentOfPostsOnPost_ID_QueryParam("?postId=1000");
 		assertionClassObj = new AssertionsClass(response);
 		assertionClassObj.verifyJsonObject("[]");
+	}
+	
+	
+	@Test
+	public void getFirstPostCommentInvalid1() throws IOException
+	{
+	
+		RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
+		Response response = RestAssured.given().header("Content-Type", "application/json")
+//                .queryParam("id", "5")
+                .when()
+                .get("/comments/5")
+                .then().using().extract().response();
+		JsonPath jsondata = response.jsonPath();
+		String actualemail = jsondata.get("email");
+		Assert.assertEquals(response.statusCode(),200);
+        Assert.assertEquals("Hayden@althea.biz", actualemail);
+		
 	}
 
 }

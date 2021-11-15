@@ -60,7 +60,6 @@ public class CommonUtils extends Base
 				given().header("Content-Type", "application/json").body(body)
 				.when().log().all().body(body).put(uri)
 				.then().log().all().using().extract().response();
-
 		return response;
 	}
 	
